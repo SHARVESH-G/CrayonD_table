@@ -38,7 +38,7 @@ export default function Tablelist(props) {
         width: '17px',
         textAlign: 'center',
         borderRadius: '25px',
-        fontWeight:'800', 
+        fontWeight: '800',
     }));
 
     const TblCon = styled(TableContainer)(({ theme }) => ({
@@ -91,12 +91,18 @@ export default function Tablelist(props) {
         placeSelf: 'center',
     }));
 
-    const BBox = styled(Box)(({theme})=>({
-        display:'flex',
-        width:'130px',
-        alignItems:'center',
-        justifyContent:'space-between'
-    }))
+    const BBox = styled(Box)(({ theme }) => ({
+        display: 'flex',
+        width: '130px',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+    }));
+
+    const StatusText = styled(Typography)(({ theme, isOnline }) => ({
+        color: isOnline ? 'green' : 'red',
+        fontWeight: '500',
+        marginLeft: '8px',
+    }));
 
     const initialMembers = [
         {
@@ -162,7 +168,7 @@ export default function Tablelist(props) {
     ];
 
     const [members, setMembers] = useState(initialMembers);
-    
+
     const title = "Excellent Last Update 23 Jan 2023";
 
     const toggleOnlineStatus = (index) => {
@@ -203,9 +209,9 @@ export default function Tablelist(props) {
                             <Cell>{member.Dept}</Cell>
                             <Cell>{member.signal ?
                                 <Sig arrow title={title} placement='bottom-start'>
-                                    <SigC backgroundColor='#7DDA58'  color='black' >C</SigC>
+                                    <SigC backgroundColor='#7DDA58' color='black' >C</SigC>
                                     <SigC backgroundColor='green' color='white'>E</SigC>
-                                    <SigC backgroundColor='orange'  color='black' >T</SigC>
+                                    <SigC backgroundColor='orange' color='black' >T</SigC>
                                     <SigC backgroundColor='yellow' color='black' >D</SigC>
                                     <SigC backgroundColor='red' color='white' >U</SigC>
                                 </Sig>
@@ -215,14 +221,14 @@ export default function Tablelist(props) {
                             </Cell>
                             <Cell>
                                 <Name direction="row" spacing={2}>
-                                    <Tooltip >
+                                    <Tooltip>
                                         <BBox display='flex'>
                                             <ProPic src={member.rptimg} />
                                             <MemName>{member.rpname}</MemName>
                                             <Score>{member.sum ? "+ 3 More" : ""}</Score>
                                         </BBox>
                                     </Tooltip>
-                                    
+
                                 </Name>
                             </Cell>
                             <Cell>{member.role}</Cell>
@@ -232,9 +238,11 @@ export default function Tablelist(props) {
                                 <Box display='flex' alignItems='center'>
                                     <Switch
                                         checked={member.online}
-                                        onChange={() => toggleOnlineStatus(index)} 
+                                        onChange={() => toggleOnlineStatus(index)}
                                     />
-                                    {member.online ? "Active" : "Deactive"}
+                                    <StatusText isOnline={member.online}>
+                                        {member.online ? "Active" : "Deactive"}
+                                    </StatusText>
                                 </Box>
                             </Cell>
                         </TableRow>
