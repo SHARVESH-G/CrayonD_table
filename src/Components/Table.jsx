@@ -50,7 +50,7 @@ export default function Tablelist(props) {
 
     const Name = styled(Stack)(({ theme }) => ({
         display: 'flex',
-        width: '11vw',
+        width: '11.5vw',
         alignItems: 'center',
     }));
 
@@ -112,7 +112,7 @@ export default function Tablelist(props) {
             role: "Employee",
             email: "georgefernandes@gmail.com",
             exp: "3 Yrs 4 Mon",
-            online: true,
+            online: false,
         },
         {
             memImg: "src/assets/Images/pp/Emilie.jpg",
@@ -127,7 +127,7 @@ export default function Tablelist(props) {
             role: "Employee",
             email: "emilie145@gmail.com",
             exp: "3 Yrs 4 Mon",
-            online: true,
+            online: false,
         },
         {
             memImg: "src/assets/Images/pp/Jason.jpg",
@@ -137,7 +137,7 @@ export default function Tablelist(props) {
             signal: true,
             op: true,
             rptimg: "src/assets/Images/pp/Bruce.jpg",
-            rpname: "Alica",
+            rpname: "Alica Dsouza",
             sum: 0,
             role: "Employee",
             email: "dominicjason22@gmail.com",
@@ -157,7 +157,7 @@ export default function Tablelist(props) {
             role: "Employee",
             email: "bruce.banner@gmail.com",
             exp: "3 Yrs 4 Mon",
-            online: true,
+            online: false,
         },
     ];
 
@@ -234,7 +234,7 @@ export default function Tablelist(props) {
                                         checked={member.online}
                                         onChange={() => toggleOnlineStatus(index)} 
                                     />
-                                    {member.online ? "Online" : "Offline"}
+                                    {member.online ? "Active" : "Deactive"}
                                 </Box>
                             </Cell>
                         </TableRow>
